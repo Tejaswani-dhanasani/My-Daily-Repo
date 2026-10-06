@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Future City</title>
+
+    <link rel="stylesheet" href="city.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            🏙️ Future City
+        </div>
+
+        <nav>
+            <a href="#citySection">City</a>
+            <a href="#controlsSection">Build</a>
+            <a href="#reportSection">Report</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">WELCOME TO THE FUTURE</p>
+
+            <h1>Design Tomorrow.<br>Shape the Future.</h1>
+
+            <p>
+                Build your own smart city and discover how
+                your decisions change its future.
+            </p>
+
+            <button id="enterButton">
+                Enter Future City 🚀
+            </button>
+
+        </div>
+
+        <div class="floating-orb"></div>
+
+    </section>
+
+
+    <!-- ================= CITY DASHBOARD ================= -->
+
+    <section id="citySection" class="section">
+
+        <h2>🏙️ Your Future City</h2>
+
+        <p class="section-text">
+            Build and manage your city using the controls below.
+        </p>
+
+
+        <!-- CITY -->
+
+        <div id="city" class="city">
+
+            <div class="sun">☀️</div>
+
+            <div class="cloud cloud1">☁️</div>
+            <div class="cloud cloud2">☁️</div>
+
+            <div class="road road1"></div>
+            <div class="road road2"></div>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <span>👥</span>
+                <h3>Population</h3>
+                <p id="population">50,000</p>
+            </div>
+
+            <div class="stat-card">
+                <span>⚡</span>
+                <h3>Energy</h3>
+                <p id="energy">72%</p>
+            </div>
+
+            <div class="stat-card">
+                <span>💧</span>
+                <h3>Water</h3>
+                <p id="water">81%</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🌳</span>
+                <h3>Green Score</h3>
+                <p id="green">64%</p>
+            </div>
+
+            <div class="stat-card">
+                <span>🚗</span>
+                <h3>Traffic</h3>
+                <p id="traffic">35%</p>
+            </div>
+
+            <div class="stat-card">
+                <span>♻️</span>
+                <h3>Recycling</h3>
+                <p id="recycling">58%</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTROLS ================= -->
+
+    <section id="controlsSection" class="section controls-section">
+
+        <h2>🛠️ Build Your City</h2>
+
+        <p class="section-text">
+            Choose what you want to add to your city.
+        </p>
+
+
+        <div class="controls">
+
+            <button onclick="addBuilding()">
+                🏢 Add Building
+            </button>
+
+            <button onclick="addPark()">
+                🌳 Add Park
+            </button>
+
+            <button onclick="addSolar()">
+                ☀️ Add Solar Plant
+            </button>
+
+            <button onclick="addTransport()">
+                🚌 Add Bus Station
+            </button>
+
+            <button onclick="addWaterPlant()">
+                💧 Add Water Plant
+            </button>
+
+            <button onclick="addHospital()">
+                🏥 Add Hospital
+            </button>
+
+            <button onclick="addSchool()">
+                🏫 Add School
+            </button>
+
+            <button onclick="addRecycling()">
+                ♻️ Add Recycling Center
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CITY STATUS ================= -->
+
+    <section class="status-section">
+
+        <div id="statusBox" class="status-box">
+
+            <h2>🌱 City Status</h2>
+
+            <p id="statusMessage">
+                Your city is ready to grow!
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= 2050 SIMULATION ================= -->
+
+    <section class="future-section">
+
+        <div class="future-content">
+
+            <p>READY TO SEE THE FUTURE?</p>
+
+            <h2>🔮 Simulate 2050</h2>
+
+            <p>
+                See how your current city could develop
+                into a futuristic city.
+            </p>
+
+            <button id="simulateButton">
+                Start 2050 Simulation
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= REPORT ================= -->
+
+    <section id="reportSection" class="section report-section">
+
+        <h2>📊 City Report</h2>
+
+        <div id="report">
+
+            <p>
+                Build your city first and generate your report.
+            </p>
+
+        </div>
+
+        <button id="reportButton">
+            Generate City Report
+        </button>
+
+    </section>
+
+
+    <!-- ================= RESET ================= -->
+
+    <section class="reset-section">
+
+        <button id="resetButton">
+            🔄 Restart City
+        </button>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 Future City | Design Tomorrow. Shape the Future.
+        </p>
+
+    </footer>
+
+
+    <script src="city.js"></script>
+
+</body>
+
+</html>
