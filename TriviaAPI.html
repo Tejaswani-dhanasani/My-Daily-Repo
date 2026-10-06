@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+
+<body>
+
+    <h1>Quiz API Test</h1>
+
+    <button onclick="getQuestions()">Get Questions</button>
+
+    <div id="result"></div>
+
+    <script>
+
+        function getQuestions() {
+
+            fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                console.log(data);
+
+                document.getElementById("result").innerHTML =
+                    data.results[0].question;
+
+            })
+
+            .catch(error => {
+
+                console.log("Error:", error);
+
+                document.getElementById("result").innerHTML =
+                    "Something went wrong!";
+
+            });
+        }
+
+    </script>
+
+</body>
+</html>

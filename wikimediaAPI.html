@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <section id="api">
+
+        <div class="study-assistant-box">
+
+    <h2>🤖 Ask Your Study Question</h2>
+
+    <p>Search your study topic and get information from Wikipedia.</p>
+
+    <div class="api-search">
+        <input
+            type="text"
+            id="question"
+            placeholder="Ask anything here..."
+            onkeydown="if(event.key === 'Enter') searchWikipedia()"
+        >
+
+        <button onclick="searchWikipedia()">
+            🔍 Ask
+        </button>
+    </div>
+
+    <div id="answer"></div>
+
+</div>
+
+    </section>
+
+
+
+<<script>
+
+async function searchWikipedia() {
+
+    let question = document.getElementById("question").value.trim();
+    let answer = document.getElementById("answer");
+
+    if (question === "") {
+        answer.innerHTML = "Please enter a question.";
+        return;
+    }
+
+    answer.innerHTML = "🔍 Searching...";
+
+    try {
+
+        // STEP 1: Search Wikipedia
+        let searchURL =
+            "https://en.wikipedia.org/w/rest.php/v1/search/page?q="
+            + encodeURIComponent(question)
+            + "&limit=5";
+
+        let searchResponse = await fetch(searchURL, {
+            headers: {
+                "Api-User-Agent": "TribalUddanStudyApp/1.0"
+            }
+        });
+
+        let searchData = await searchResponse.json();
+
+        if (!searchData.pages || searchData.pages.length === 0) {
+            answer.innerHTML = "❌ No information found.";
+            return;
+        }
+
+        // STEP 2: Take first matching page
+        let page = searchData.pages[0];
+
+        // STEP 3: Get article summary
+        let summaryURL =
+            "https://en.wikipedia.org/api/rest_v1/page/summary/"
+            + encodeURIComponent(page.key);
+
+        let summaryResponse = await fetch(summaryURL);
+
+        let summaryData = await summaryResponse.json();
+
+        // STEP 4: Display result
+        if (summaryData.extract) {
+
+            answer.innerHTML = `
+                <div class="api-result">
+
+                    <h2>${summaryData.title}</h2>
+
+                    <p>${summaryData.extract}</p>
+
+                    <a href="${summaryData.content_urls.desktop.page}"
+                       target="_blank">
+                       📖 Read full article
+                    </a>
+
+                </div>
+            `;
+
+        } else {
+
+            answer.innerHTML =
+                "Information was found, but a summary is not available.";
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        answer.innerHTML =
+            "⚠️ Something went wrong. Please try again.";
+    }
+}
+
+</script>
+
+</body>
+</html>
